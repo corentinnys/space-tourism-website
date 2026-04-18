@@ -1,0 +1,28 @@
+nav{
+    width:40%;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+    padding: 10px;
+    position: absolute;
+    top: 20px;
+    left: 60%;
+}
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 0.5rem;
+}
+
+a:hover{
+    border-bottom: 2px solid white;
+}
