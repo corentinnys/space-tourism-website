@@ -47,7 +47,7 @@ function Navigation() {
         <Route path="/" element={<Home />} />
         <Route path="/destination" element={<Destination data={items.destinations}/>} />
         <Route path="/Crew" element={<Crew  data={items.crew}/>} />
-        <Route path="/Technology" element={<Technology />} />
+        <Route path="/Technology" element={<Technology data={items.technology} />} />
     </Routes>
         </>
     )
