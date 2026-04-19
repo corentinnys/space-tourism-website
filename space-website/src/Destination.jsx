@@ -1,13 +1,19 @@
 import { useState } from "react";
 
 function Destination({ data }) {
-    const [selectedItem, setSelectedItem] = useState(null);
 
-    if (!data) return <div>Chargement...</div>;
+
 
     const handleSelection = (item) => {
         setSelectedItem(item);
     };
+    const [selectedItem, setSelectedItem] = useState(null);
+ const currentItem = selectedItem || data?.[0];
+
+
+
+
+
 
     return (
         <div
@@ -17,14 +23,23 @@ function Destination({ data }) {
                 backgroundSize: "cover",
             }}
         >
-            <h1>Pick your destination</h1>
+
 
             <div className="container">
                 <div className="row">
-
+                    {/*<h1 className="text-white" style={{position:"relative",top:"100px"}}>Pick your destination</h1>*/}
                     {/* IMAGE */}
                     <div className="col-6 d-flex flex-column justify-content-center align-items-center">
-                        {selectedItem ? (
+
+                        <div className="col-6 d-flex justify-content-center align-items-center" style={{ position: "relative", top: "100px" }}>
+                            <img className="d-block w-100"
+                                src={currentItem?.images.png}
+                                alt={currentItem?.name}
+                                style={{ width: "400px", height: "500px"  }}
+                            />
+                        </div>
+
+                        {/*{selectedItem ? (
                             <img
                                 src={selectedItem.images.png}
                                 alt={selectedItem.name}
@@ -34,9 +49,9 @@ function Destination({ data }) {
                             <img
                                 src={data[0].images.png}
                                 alt={data[0].name}
-                                style={{ width: "300px" }}
+                                style={{ width: "400px",position:"relative",top:"100px",right:"100px" }}
                             />
-                        )}
+                        )}*/}
                     </div>
 
                     {/* LISTE */}
@@ -60,10 +75,10 @@ function Destination({ data }) {
                             }
 
                     </div>*/}
-                    <div className="col-4 d-flex flex-column justify-content-start align-items-end">
+                    <div className="col-6 d-flex flex-column justify-content-start align-items-end">
 
                         <ul style={{ marginTop: "250px" }}>
-                            {data.map((item, index) => (
+                            {data?.map((item, index) => (
                                 <li
                                     key={index}
                                     className={`text-white ${selectedItem?.name === item.name ? "active" : ""}`}
@@ -75,22 +90,22 @@ function Destination({ data }) {
                             ))}
                         </ul>
 
-                        {selectedItem && (
+                        {currentItem && (
                                 <div  style={{ marginTop: "50px" }}>
-                                    <h2 className="text-white" style={{fontSize:"70px"}}>{selectedItem.name}</h2>
+                                    <h2 className="text-white" style={{fontSize:"70px"}}>{currentItem.name}</h2>
                                     <p className="text-white mt-3" style={{textAlign:"justify",marginBottom:"50px"}}>
-                                        {selectedItem.description}
+                                        {currentItem.description}
                                     </p>
                                     <hr className="text-white" style={{marginTo:"100px"}}/>
                                     <div>
                                         <div className="d-flex justify-content-between">
                                             <div className="text-white d-flex flex-column">
                                                 <span>Avg.distance</span>
-                                                <span style={{fontSize:"30px"}}>{selectedItem.distance}</span>
+                                                <span style={{fontSize:"30px"}}>{currentItem.distance}</span>
                                             </div>
                                             <div className="text-white  d-flex flex-column">
                                                 <span>Trtavel time</span>
-                                                <span style={{fontSize:"30px"}}>{selectedItem.travel}</span>
+                                                <span style={{fontSize:"30px"}}>{currentItem.travel}</span>
                                             </div>
                                         </div>
                                     </div>
