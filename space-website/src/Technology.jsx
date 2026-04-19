@@ -2,10 +2,13 @@
 import { Routes, Route } from "react-router-dom";
 import {useState} from "react";
 function Tecnology({ data = []}) {
-    const [selectedItem, setSelectedItem] = useState(null);
-    const handleSelection = (item) => {
+    const [selectedItem, setSelectedItem] = useState(data[0]);
+    const [active,setActive] = useState(0);
+    const handleSelection = (item,index) => {
         setSelectedItem(item);
+        setActive(index);
     }
+
     return (
         <div
             style={{
@@ -21,7 +24,7 @@ function Tecnology({ data = []}) {
 
                     {/* LEFT TEXT */}
                     <div className="col-4 text-white">
-                        <h2>{selectedItem?.name}</h2>
+                        <h2 style={{fontSize:"3rem",textTransform:"uppercase",marginBottom:"2rem"}}>{selectedItem?.name}</h2>
                         <p>{selectedItem?.description}</p>
                     </div>
 
@@ -53,17 +56,19 @@ function Tecnology({ data = []}) {
                 {data?.map((item, index) => (
                     <li
                         key={index}
-                        onClick={() => handleSelection(item)}
+                        onClick={() => handleSelection(item, index)}
                         style={{
                             cursor: "pointer",
-                            color: "black",
-                            backgroundColor: "white",
+                            color: active === index ? "black" : "white",
+                            backgroundColor: active === index ? "white" : "transparent",
+                            border: "1px solid white",
                             borderRadius: "50%",
                             width: "50px",
                             height: "50px",
                             display: "flex",
                             justifyContent: "center",
-                            alignItems: "center"
+                            alignItems: "center",
+                            transition: "0.3s"
                         }}
                     >
                         {index + 1}
