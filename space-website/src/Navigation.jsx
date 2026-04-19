@@ -1,27 +1,43 @@
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,Link } from "react-router-dom";
 import Home from "./Home.jsx";
 import Destination from "./Destination.jsx";
 import Crew from "./Crew.jsx";
 import Technology from "./Technology.jsx";
 import './Navigation.css' ;
+import {useEffect, useState} from "react";
 function Navigation() {
+    const [items, setItems] = useState([]);
+    useEffect(() => {
+        fetch('/data.json')
+            .then((res) => res.json())
+            .then((data) => {
+            console.log(data); // ✅ maintenant OK
+            setItems(data);
+        })
+            .catch((err) => console.error(err));
+    }, []);
 
     return (
         <>
        <nav>
             <ul>
                 <li>
-                    <a href="/">Home</a>
+
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <a href="/destination">Destination</a>
+
+
+                    <Link to="/destination">Destination</Link>
                 </li>
                 <li>
-                    <a href="/Crew">Crew</a>
+                    <Link to="/Crew">Crew</Link>
+
                 </li>
                 <li>
-                    <a href="/Technology">Technology</a>
+                    <Link to="/Technology">Technology</Link>
+
                 </li>
             </ul>
         </nav>
@@ -29,7 +45,7 @@ function Navigation() {
 
     <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/destination" element={<Destination />} />
+        <Route path="/destination" element={<Destination data={items.destinations}/>} />
         <Route path="/Crew" element={<Crew />} />
         <Route path="/Technology" element={<Technology />} />
     </Routes>
