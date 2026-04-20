@@ -8,6 +8,7 @@ import './Navigation.css' ;
 import {useEffect, useState} from "react";
 function Navigation() {
     const [items, setItems] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
     useEffect(() => {
         fetch('/data.json')
             .then((res) => res.json())
@@ -20,27 +21,18 @@ function Navigation() {
 
     return (
         <>
-       <nav>
-            <ul>
-                <li>
+            <nav className="nav">
+                <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
+                    ☰
+                </div>
 
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-
-
-                    <Link to="/destination">Destination</Link>
-                </li>
-                <li>
-                    <Link to="/Crew">Crew</Link>
-
-                </li>
-                <li>
-                    <Link to="/Technology">Technology</Link>
-
-                </li>
-            </ul>
-        </nav>
+                <ul className={isOpen ? "nav-links active" : "nav-links"}>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/destination">Destination</Link></li>
+                    <li><Link to="/Crew">Crew</Link></li>
+                    <li><Link to="/Technology">Technology</Link></li>
+                </ul>
+            </nav>
 
 
     <Routes>

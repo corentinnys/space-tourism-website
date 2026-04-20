@@ -42,6 +42,8 @@ function Crew({data}) {
                              height: "100vh",
                              padding: "0 50px"
                          }}
+                         className="crew-item"
+
                      >
                          <div
                              style={{
@@ -56,7 +58,7 @@ function Crew({data}) {
                              <p className="text-white">{currentItem.bio}</p>
                          </div>
 
-                         <div >
+                         <div className="intervenants">
                              <img
                                  src={currentItem.images.png}
                                  alt={currentItem.name}

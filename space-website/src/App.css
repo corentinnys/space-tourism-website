@@ -2,3 +2,85 @@
     padding: 5px;
     border-bottom: 2px solid white;
 }
+
+.explore-btn {
+    background: white;
+    border-radius: 50%;
+    height: 200px;
+    position: relative;
+    left: 300px;
+}
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+/* MENU NORMAL (desktop) */
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+    .explore-btn {
+        left: 150px;
+        height: 300px;
+        width: 300px;
+    }
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 60%;
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+    .nav-links {
+        display: none;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+
+    .crew-item {
+        gap: 20px;
+        height: auto;
+        text-align: center;
+        flex-direction: column-reverse;
+    }
+
+    .crew-item img {
+
+        width: 70%;
+        margin: auto;
+        margin-top: 100px;
+
+    }
+
+
+
+}

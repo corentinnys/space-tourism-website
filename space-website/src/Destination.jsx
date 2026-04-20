@@ -29,9 +29,9 @@ function Destination({ data }) {
                 <div className="row">
                     {/*<h1 className="text-white" style={{position:"relative",top:"100px"}}>Pick your destination</h1>*/}
                     {/* IMAGE */}
-                    <div className="col-6 d-flex flex-column justify-content-center align-items-center">
+                    <div className="col-lg-6 col-md-12 d-flex flex-column justify-content-center align-items-center">
 
-                        <div className="col-6 d-flex justify-content-center align-items-center" style={{ position: "relative", top: "100px" }}>
+                        <div className="col-lg-6 col-md-12 d-flex justify-content-center align-items-center" style={{ position: "relative", top: "100px" }}>
                             <img className="d-block w-100"
                                 src={currentItem?.images.png}
                                 alt={currentItem?.name}
@@ -75,8 +75,7 @@ function Destination({ data }) {
                             }
 
                     </div>*/}
-                    <div className="col-6 d-flex flex-column justify-content-start align-items-end">
-
+                    <div className="col-lg-6 col-md-12 d-flex flex-column justify-content-start align-items-lg-end align-items-center text-center text-lg-end navbar-secondary">
                         <ul style={{ marginTop: "250px" }}>
                             {data?.map((item, index) => (
                                 <li
